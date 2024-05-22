@@ -9,22 +9,46 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div class="bg-opt-1-5 container h-screen">
+    <div class="bg-opt-1-5 h-screen w-full">
 
         <!-- con id="app" se indica que va hacer nuestro espacio de trabajo -->
-        <div id="app">
+        <!-- <div id="app">
             <h1 class="text-center">{{ message }} -> {{ counter }}</h1>
             <h2 class="text-center">Minutos: {{ minutes }}</h2>
             <p class="ml-4">Nombre: {{ nombre + " Apellido" }}</p>
             <p class="ml-4">Edad: {{ edad + 5 }}</p>
-        </div>
+        </div> -->
         
+        <div id="app2">
+            <h1 class="text-center py-6">Vue JS</h1>
+
+            <div class="flex justify-center">
+                <div class="w-1/3 bg-white shadow-lg rounded-lg p-6">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="num1">
+                            {{ counter }}
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" v-on:click="increment()">
+                            Aumentar
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" v-on:click="decrement()">
+                            Disminuir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
         // console.log(Vue);
 
+       /*
         Vue.createApp({
             data(){
                 return { // acá se definen todas las propiedades que se requieran
@@ -45,6 +69,28 @@
                 }, 1000)
             }
         }).mount('#app'); // se monta la app sobre la sección que se declaro con id=app
+        */
+        
+        Vue.createApp({
+           data(){
+                return {
+                    counter: 0,
+                }
+           },
+           mounted(){
+
+           },
+           methods: { // métodos
+                decrement(){
+                    if (this.counter > 0) {
+                        this.counter--;
+                    }
+                },
+                increment(){
+                    this.counter++;
+                }
+           }
+        }).mount('#app2')
     </script>
 </body>
 </html>
