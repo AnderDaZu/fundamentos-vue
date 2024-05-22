@@ -9,13 +9,42 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div class="container bg-opt-1-5 w-full h-screen">
+    <div class="bg-opt-1-5 container h-screen">
+
+        <!-- con id="app" se indica que va hacer nuestro espacio de trabajo -->
+        <div id="app">
+            <h1 class="text-center">{{ message }} -> {{ counter }}</h1>
+            <h2 class="text-center">Minutos: {{ minutes }}</h2>
+            <p class="ml-4">Nombre: {{ nombre + " Apellido" }}</p>
+            <p class="ml-4">Edad: {{ edad + 5 }}</p>
+        </div>
         
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
-        console.log(Vue);
+        // console.log(Vue);
+
+        Vue.createApp({
+            data(){
+                return { // acá se definen todas las propiedades que se requieran
+                    counter: 0,
+                    minutes: 0,
+                    message: 'Hello there!',
+                    nombre: 'Anderson',
+                    edad: 20
+                }
+            },
+            mounted(){ // This is a Vue.js lifecycle hook called mounted which is called after the Vue instance has been mounted on the DOM.
+                setInterval(() => {
+                    if( (this.counter/60) == 1 ){
+                        this.counter = 0
+                        this.minutes++
+                    }
+                    this.counter++;
+                }, 1000)
+            }
+        }).mount('#app'); // se monta la app sobre la sección que se declaro con id=app
     </script>
 </body>
 </html>
