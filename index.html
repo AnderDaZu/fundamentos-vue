@@ -43,7 +43,7 @@
             </div>
         </div> -->
 
-        <div id="app3">
+        <!-- <div id="app3">
             
             <form class="max-w-sm mx-auto mb-4" v-on:submit.prevent="add()">
                 <label for="pais" class="block mb-2 text-sm font-medium text-gray-900">País</label>
@@ -67,8 +67,6 @@
                 </div>
                 
                 <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 my-4">Agregar</button>
-                
-                <!-- <p class="mt-2 text-sm text-green-600 dark:text-green-500"><span class="font-medium">Paises: </span>{{ paises }}</p> -->
 
             </form>
 
@@ -110,6 +108,46 @@
                     </tbody>
                 </table>
             </div>
+
+        </div> -->
+    
+        <div id="app4" class="max-w-md mx-auto">
+            <template v-if="active == 'Lunes'">
+                <div>
+                    <h1 class="font-semibold text-gray-700 text-3xl text-center">Anderscode -> Hoy es Lunes 😉</h1>
+                </div>
+            </template>
+
+            <template v-else-if="active == 'Martes'">
+                <div>
+                    <h1 class="font-semibold text-gray-700 text-3xl text-center">Anderscode -> Hoy es Martes 😉</h1>
+                </div>
+            </template>
+
+            <template v-else-if="active == 'Miercoles'">
+                <div>
+                    <h1 class="font-semibold text-gray-700 text-3xl text-center">Anderscode -> Hoy es Miercoles 😉</h1>
+                </div>
+            </template>
+
+            <template v-else>
+                <div>
+                    <h1 class="font-semibold text-gray-700 text-3xl text-center">Anderscode -> No se encontró día 😉</h1>
+                </div>
+            </template>
+
+            <div class="flex justify-center mt-4">
+                <div class="w-1/3 bg-white shadow-lg rounded-lg p-6">
+                    <div class="">
+                        <!-- v-if -> valida la condición y de no cumplirse quita el elemento del DOM -->
+                        <p v-if="activeText">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore ab nobis eum et corrupti provident illo unde. Commodi repellendus aperiam adipisci molestiae ea a pariatur, accusamus illum ullam rem minima.</p>
+
+                        <!-- v-show -> valida la condición y de no cumplirse solo oculta el elemento en el DOM -->
+                        <p v-show="activeText">Vitae consequatur earum doloribus ipsa blanditiis tempore aspernatur perferendis doloremque, cumque obcaecati corporis numquam facere impedit quos, qui itaque accusamus! Inventore magnam sunt soluta tempora repellat rerum libero, aperiam minus!</p>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
@@ -163,7 +201,7 @@
         */
         
         // v-model -> es una directiva de Vue 3 que permite crear enlaces bidireccionales entre los datos y la interfaz de usuario.
-        Vue.createApp({
+        /*Vue.createApp({
             data(){
                 return {
                     name: '',
@@ -205,7 +243,18 @@
             mounted(){
 
             }
-        }).mount('#app3');
+        }).mount('#app3');*/
+
+        Vue.createApp({
+            data(){
+                return {
+                    active: '',
+                    activeText: false
+                }
+            },
+            mounted(){
+            }
+        }).mount('#app4');
 
    </script>
 </body>
