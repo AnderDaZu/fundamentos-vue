@@ -173,9 +173,11 @@
                 <span v-else>Activar</span>
             </button>
 
-            <p :class=" active ? 'text-blue-600' : 'text-gray-600' ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere numquam, ullam commodi labore aperiam consequuntur veritatis incidunt suscipit! Necessitatibus eius sunt vitae illo, cupiditate dolor rerum similique sequi voluptates assumenda.</p>
+            <p :class="textClassComputed">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere numquam, ullam commodi labore aperiam consequuntur veritatis incidunt suscipit! Necessitatibus eius sunt vitae illo, cupiditate dolor rerum similique sequi voluptates assumenda.</p>
 
-            <button @click="submit()" v-bind:disabled="is_submited" :class=" !is_submited ? 'focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' : 'focus:outline-none text-white bg-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' " type="button" class="mt-6 ">Enviar</button>
+            <button @click="submit()" v-bind:disabled="is_submited" :class="buttonClassComputed" type="button" class="mt-6 ">Enviar</button>
+
+            <p class="mt-6 text-md">{{ fullName }}</p>
 
         </div>
     </div>
@@ -289,7 +291,9 @@
                 return {
                     color: 'black',
                     active: true,
-                    is_submited: false
+                    is_submited: false,
+                    name: 'Anderson',
+                    lastName: 'Herrera'
                 }
             },
             methods: {
@@ -297,6 +301,18 @@
                     if ( !this.is_submited ) {
                         this.is_submited = true
                     }
+                }
+            },
+            // propiedades computadas
+            computed: {
+                buttonClassComputed(){
+                    return !this.is_submited ? 'focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' : 'focus:outline-none text-white bg-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' 
+                },
+                textClassComputed(){
+                    return this.active ? 'text-blue-600' : 'text-gray-600'
+                },
+                fullName(){
+                    return this.name + ' ' + this.lastName
                 }
             },
             mounted(){
