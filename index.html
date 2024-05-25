@@ -111,7 +111,7 @@
 
         </div> -->
     
-        <div id="app4" class="max-w-md mx-auto">
+        <div id="app4" class="max-w-md mx-auto" hidden>
             <template v-if="active == 'Lunes'">
                 <div>
                     <h1 class="font-semibold text-gray-700 text-3xl text-center">Anderscode -> Hoy es Lunes 😉</h1>
@@ -148,6 +148,34 @@
                 </div>
             </div>
 
+
+        </div>
+
+        <div id="app5" class="max-w-md mx-auto">
+            <div class="flex justify-center">
+                <button v-on:click=" color = 'text-red-500' " type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Red</button>
+    
+                <button v-on:click=" color = 'text-green-500' " type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Green</button>
+    
+                <button @click=" color = 'text-blue-500' " type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Blue</button>
+            </div>
+
+            <!-- 
+                formas para agregar clases dinamicamente a los elementos, se puede realizar de 2 formas
+                1. usando v-bind:class='clases'
+                2. usando :class='clases'
+            -->
+
+            <p class="text-center text-xl mt-4" v-bind:class="color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur accusamus, nisi sunt consequuntur quos eaque placeat totam laboriosam rem maiores dolore reiciendis debitis aspernatur ex iusto aliquid eveniet enim magnam!</p>
+
+            <button @click="active = !active" type="button" class="mt-6 mb-4 rounded-lg border border-gray-800 px-4 py-2">
+                <span v-if="active">Desactivar</span>
+                <span v-else>Activar</span>
+            </button>
+
+            <p :class=" active ? 'text-blue-600' : 'text-gray-600' ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere numquam, ullam commodi labore aperiam consequuntur veritatis incidunt suscipit! Necessitatibus eius sunt vitae illo, cupiditate dolor rerum similique sequi voluptates assumenda.</p>
+
+            <button @click="submit()" v-bind:disabled="is_submited" :class=" !is_submited ? 'focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' : 'focus:outline-none text-white bg-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' " type="button" class="mt-6 ">Enviar</button>
 
         </div>
     </div>
@@ -245,7 +273,7 @@
             }
         }).mount('#app3');*/
 
-        Vue.createApp({
+        /*Vue.createApp({
             data(){
                 return {
                     active: '',
@@ -254,8 +282,27 @@
             },
             mounted(){
             }
-        }).mount('#app4');
+        }).mount('#app4');*/
 
+        Vue.createApp({
+            data(){
+                return {
+                    color: 'black',
+                    active: true,
+                    is_submited: false
+                }
+            },
+            methods: {
+                submit(){
+                    if ( !this.is_submited ) {
+                        this.is_submited = true
+                    }
+                }
+            },
+            mounted(){
+
+            }
+        }).mount('#app5');
    </script>
 </body>
 </html>
