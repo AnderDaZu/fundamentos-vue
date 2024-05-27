@@ -3,23 +3,11 @@ const app = Vue.createApp({
         return {
             counter: 0,
             textSize: 1,
-            courses: [
-                {
-                    id: 1,
-                    name: 'Vue JS',
-                    price: 50
-                },
-                {
-                    id: 2,
-                    name: 'React JS',
-                    price: 60
-                },
-                {
-                    id: 3,
-                    name: 'Angular',
-                    price: 70
-                }
-            ]
+            course: {
+                id: 1,
+                name: 'Vue JS',
+                price: 50
+            }
         }
     },
     methods: {
@@ -63,6 +51,7 @@ app.component('detail-course', {
         <div>
             <h2 class="ml-2 mt-6 text-4xl text-gray-900">{{ course.name }}</h2>
             <p class="ml-4 mt-1 text-2x">Precio: {{ '$' + course.price }}</p>
+            <slot></slot>
             <button @click="$emit('crecerTexto', 0.2)" class="bg-gray-200 ml-4 px-2 py-1 rounded rounded-md">Crecer Texto</button>
         </div>
     `,

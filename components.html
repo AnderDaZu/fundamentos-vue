@@ -14,7 +14,10 @@
         <button-counter hidden></button-counter>   
         <button-counter hidden></button-counter>   
         <div :style="{ fontSize: textSize + 'rem' }">
-            <detail-course @crecer-texto=" add($event) " v-for="course in courses" :key="course.id" :course="course"></detail-course>
+            <detail-course @crecer-texto=" add($event) " :key="course.id" :course="course">
+                <!-- Este 👇 texto lo recibe el componente como slot, si no se configura este texto no se mostraría en el componente -->
+                <p class="ml-4 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque fugit voluptatem libero dolore? Commodi asperiores doloremque id aperiam. Dolores placeat, qui laborum nesciunt impedit nemo obcaecati distinctio officiis eaque magni.</p>
+            </detail-course>
 
             <!-- add($event) 👈 es igual a 👉 add -->
 
