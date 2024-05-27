@@ -2,6 +2,7 @@ const app = Vue.createApp({
     data(){
         return {
             counter: 0,
+            textSize: 1,
             courses: [
                 {
                     id: 1,
@@ -21,6 +22,11 @@ const app = Vue.createApp({
             ]
         }
     },
+    methods: {
+        add(size){
+            this.textSize += size;
+        }
+    }
 });
 
 app.component('button-counter', {
@@ -54,7 +60,10 @@ app.component('detail-course', {
     },
     props: ['course'],
     template: `
-        <h2 class="ml-2 mt-6 text-4xl text-gray-900">{{ course.name }}</h2>
-        <p class="ml-4 mt-1 text-2x">Precio: {{ '$' + course.price }}</p>
+        <div>
+            <h2 class="ml-2 mt-6 text-4xl text-gray-900">{{ course.name }}</h2>
+            <p class="ml-4 mt-1 text-2x">Precio: {{ '$' + course.price }}</p>
+            <button @click="$emit('crecerTexto', 0.2)" class="bg-gray-200 ml-4 px-2 py-1 rounded rounded-md">Crecer Texto</button>
+        </div>
     `,
 });

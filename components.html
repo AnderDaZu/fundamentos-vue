@@ -13,7 +13,13 @@
         <button-counter hidden></button-counter>   
         <button-counter hidden></button-counter>   
         <button-counter hidden></button-counter>   
-        <detail-course v-for="course in courses" :key="course.id" :course="course"></detail-course>
+        <div :style="{ fontSize: textSize + 'rem' }">
+            <detail-course @crecer-texto=" add($event) " v-for="course in courses" :key="course.id" :course="course"></detail-course>
+
+            <!-- add($event) 👈 es igual a 👉 add -->
+
+            <detail-course @crecer-texto=" add " v-for="course in courses" :key="course.id" :course="course" hidden></detail-course>
+        </div>
     </div>
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
