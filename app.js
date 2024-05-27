@@ -1,7 +1,24 @@
 const app = Vue.createApp({
     data(){
         return {
-            counter: 0
+            counter: 0,
+            courses: [
+                {
+                    id: 1,
+                    name: 'Vue JS',
+                    price: 50
+                },
+                {
+                    id: 2,
+                    name: 'React JS',
+                    price: 60
+                },
+                {
+                    id: 3,
+                    name: 'Angular',
+                    price: 70
+                }
+            ]
         }
     },
 });
@@ -29,4 +46,15 @@ app.component('button-counter', {
             }
         }
     }
+});
+
+app.component('detail-course', {
+    data(){
+        return {}
+    },
+    props: ['course'],
+    template: `
+        <h2 class="ml-2 mt-6 text-4xl text-gray-900">{{ course.name }}</h2>
+        <p class="ml-4 mt-1 text-2x">Precio: {{ '$' + course.price }}</p>
+    `,
 });

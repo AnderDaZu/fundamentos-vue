@@ -10,9 +10,10 @@
 <body>
 
     <div id="app">
-        <button-counter></button-counter>   
-        <button-counter></button-counter>   
-        <button-counter></button-counter>   
+        <button-counter hidden></button-counter>   
+        <button-counter hidden></button-counter>   
+        <button-counter hidden></button-counter>   
+        <detail-course v-for="course in courses" :key="course.id" :course="course"></detail-course>
     </div>
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
