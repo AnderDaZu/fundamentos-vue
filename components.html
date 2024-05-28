@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <div id="app">
+        <button-counter hidden></button-counter>   
+        <button-counter hidden></button-counter>   
+        <button-counter hidden></button-counter>   
+        <div :style="{ fontSize: textSize + 'rem' }">
+            <detail-course @crecer-texto=" add($event) " :key="course.id" :course="course">
+                <!-- Este 👇 texto lo recibe el componente como slot, si no se configura este texto no se mostraría en el componente -->
+                <p class="ml-4 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque fugit voluptatem libero dolore? Commodi asperiores doloremque id aperiam. Dolores placeat, qui laborum nesciunt impedit nemo obcaecati distinctio officiis eaque magni.</p>
+            </detail-course>
+
+            <!-- add($event) 👈 es igual a 👉 add -->
+
+            <detail-course @crecer-texto=" add " v-for="course in courses" :key="course.id" :course="course" hidden></detail-course>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+    <script>
+        app.mount('#app');
+    </script>
+</body>
+</html>
